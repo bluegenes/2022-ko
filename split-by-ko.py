@@ -28,7 +28,7 @@ def write_fastas(fastaD, infoD, output_dir, fasta_type):
     for n, (ident, records) in enumerate(fastaD.items()):
         if n % 10000 == 0:
             progress = float(n)/total_ko * 100
-            print(f"writing file for {n}'th ko, '{ident} ({progress}% of {fasta_type} ko's)'.\n")
+            print(f"writing file for {n}'th ko, {ident} ({progress}% of {fasta_type} ko's).\n")
         # make filename
         this_filename = f"{outdir}/{ident}.fna"
         if fasta_type == "protein":
@@ -81,7 +81,7 @@ def cmdline(sys_args):
     "Command line entry point w/argparse action."
     p = argparse.ArgumentParser()
     p.add_argument("--protein-fasta", default= "kegg_genes_KO.faa")
-    p.add_argument("--nucl-fasta", default= None)
+    p.add_argument("--nucl-fasta", default= "kegg_genes_KO.fna")
     p.add_argument("--output-dir", default="ko_split_fastas")
     p.add_argument("--output-fromfile-csv", default= "ko.fromfile.csv")
     args = p.parse_args()
